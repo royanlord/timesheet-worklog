@@ -6,35 +6,8 @@ import AdminDashboard from "../components/AdminDashboard/AdminDashboard"
 import WorklogForm from "../components/WorklogForm/WorklogForm"
 import ButtonLogout from "../components/ButtonLogout/ButtonLogout"
 
-interface Employees {
-    id: number
-    name: string
-    age: number
-}
-
 const TimeSheet = () => {
-    const prisma = new PrismaClient()
     const [showForm, setShowForm] = useState<boolean>(false);
-
-    const [employees, setEmployees] = useState<Employees[]>([])
-
-    useEffect(() => {
-        const fetchEmployees = async () => {
-            try {
-                const response = await fetch('/api/employees')
-                const data = await response.json()
-                setEmployees(data)
-            } catch (error) {
-                console.log(error);
-            }
-        }
-
-        fetchEmployees()
-    }, [])
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
-    }
 
     return (
         <div className="min-h-screen bg-gray-100 py-8">
@@ -56,7 +29,6 @@ const TimeSheet = () => {
                 <AdminDashboard />
                 <ButtonLogout />
             </div>
-
         </div>
     )
 }
