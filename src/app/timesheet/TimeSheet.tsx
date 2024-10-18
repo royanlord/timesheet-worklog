@@ -1,7 +1,6 @@
 'use client'
 
-import { PrismaClient } from "@prisma/client"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import AdminDashboard from "../components/AdminDashboard/AdminDashboard"
 import WorklogForm from "../components/WorklogForm/WorklogForm"
 import ButtonLogout from "../components/ButtonLogout/ButtonLogout"
