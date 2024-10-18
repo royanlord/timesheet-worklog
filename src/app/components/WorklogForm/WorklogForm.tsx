@@ -24,7 +24,11 @@ interface ListEmployees {
     age: number
 }
 
-const WorklogForm = () => {
+interface WorklogFormProps {
+    onAdd: () => void;
+}
+
+const WorklogForm = ({ onAdd }: WorklogFormProps) => {
     const [date, setDate] = useState<string>('');
     const [projects, setProjects] = useState<Project[]>([]);
     const [isAbsence, setIsAbsence] = useState<boolean>(false);
@@ -125,6 +129,7 @@ const WorklogForm = () => {
             });
     
             if (response.ok) {
+                onAdd();
                 console.log('Form submitted successfully');
             } else if (response.status === 400) {
                 alert('Total hours for project cannot exceed 8 hours.');

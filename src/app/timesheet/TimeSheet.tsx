@@ -7,6 +7,7 @@ import ButtonLogout from "../components/ButtonLogout/ButtonLogout"
 
 const TimeSheet = () => {
     const [showForm, setShowForm] = useState<boolean>(false);
+    const [refresh, setRefresh] = useState<boolean>(false);
 
     return (
         <div className="min-h-screen bg-gray-100 py-8">
@@ -23,9 +24,9 @@ const TimeSheet = () => {
 
                 {
                     showForm && 
-                    <WorklogForm />
+                    <WorklogForm onAdd={() => setRefresh(!refresh)} />
                 }
-                <AdminDashboard />
+                <AdminDashboard refresh={refresh} />
                 <ButtonLogout />
             </div>
         </div>

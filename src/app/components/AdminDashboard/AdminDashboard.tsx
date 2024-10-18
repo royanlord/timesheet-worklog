@@ -19,7 +19,11 @@ interface Worklog {
     isAbsence: boolean;
 }
 
-const AdminDashboard = () => {
+interface AdminDashboardProps {
+    refresh: boolean;
+}
+
+const AdminDashboard = ({ refresh }: AdminDashboardProps) => {
     const [selectedMonth, setSelectedMonth] = useState<number>(new Date().getMonth());
     const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
     const [dataWorklog, setDataWorklog] = useState<Worklog[]>([]);
@@ -37,7 +41,7 @@ const AdminDashboard = () => {
 
     useEffect(() => {
         fetchWorklogs();
-    }, [dataWorklog])
+    }, [refresh])
 
     const formatDate = (dateString: string) => {
         const date = new Date(dateString);
